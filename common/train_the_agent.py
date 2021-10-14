@@ -7,7 +7,6 @@ import torch.nn.functional as F
 
 import numpy as np
 import pickle
-import time
 
 from common.utils import hwc2chw
 from common.test_the_agent import test_the_agent
@@ -21,8 +20,6 @@ def train_the_agent(envs, num_envs, Variable, state_shape, actor_critic, optimiz
     rollout.states[0].copy_(current_state)
     
     i_step = 0
-    s = time.time()
-    best_win_ratio = 0
 
     #if the agent should be trained until the performance plateau, we just simply set the number of training step to a really large number, which is 1e8.
     while i_step < args.num_steps:
@@ -62,21 +59,11 @@ def train_the_agent(envs, num_envs, Variable, state_shape, actor_critic, optimiz
         optimizer.step()
         rollout.after_update()
         
-        if i_step % args.eval_per == 0:
+        if i_step % args.eval_freq == 0:
             if data_path != None:
-                print('evaluating the model....')
                 solved_rate, eval_avg_reward = test_the_agent(actor_critic, data_path, args.USE_CUDA, args.eval_num)
 
-                e = time.time()
-
-                printer_stuff = {
-                                'solved rate over 20 games': solved_rate,
-                                'total trained env steps': actor_critic.steps_done,
-                                'average evaluated rewards over 20 games': eval_avg_reward,
-                                'training on': data_path,
-                                'costed time so far': e - s
-                                }
-                print(printer_stuff)
                 wandb_session.log({'solved_ratio': solved_rate})
+                print('solved ratio: {}'.format(solved_rate))
 
     envs.close()

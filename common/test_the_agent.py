@@ -25,7 +25,7 @@ def test_the_agent(agent, data_path, USE_CUDA, eval_num, display=False):
             print('current state\n')
             print(env.room_state)
         state = hwc2chw(state, test=True)
-        if USE_CUDA == 'True':
+        if USE_CUDA:
             state = state.cuda()
         action = agent.select_action(state.unsqueeze(0), test=1)
         if display:
@@ -39,7 +39,7 @@ def test_the_agent(agent, data_path, USE_CUDA, eval_num, display=False):
 
         while not done:
             state = next_state
-            if USE_CUDA == 'True':
+            if USE_CUDA:
                 state = state.cuda()
             with torch.no_grad():
                 action = agent.select_action(state.unsqueeze(0), test=1)

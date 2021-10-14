@@ -3,12 +3,10 @@ import pickle
 
 def fix_and_reinit(actor_critic, optimizer, fix='conv'):
 
-    actor_critic.load_state_dict(checkpoint['a2c'])
-    actor_critic.steps_done = checkpoint['steps_done']
-    optimizer.load_state_dict(checkpoint['optimizer'])
     actor_critic.train()
     
     if fix != 'conv':
+        fix = int(fix)
         for child in actor_critic.children():
             for i, param in enumerate(child.parameters()):
                 if i > (2 * fix - 1):

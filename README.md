@@ -13,7 +13,7 @@ python main.py
 
 ## Citation
 ```
-@inproceedings{yang2021potential, 
+@inproceedings{yang2021transfer, 
   title={Transfer Learning and Curriculum Learning in Sokoban}, 
   author={Yang, Zhao and Preuss, Mike and Plaat, Aske}, 
   booktitle={Benelux Conference on Artificial Intelligence}, 

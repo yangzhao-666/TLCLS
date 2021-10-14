@@ -5,6 +5,7 @@ The code used for BNAIC 2021 paper [Transfer Learning and Curriculum Learning in
 ```
 conda env create -f environment.yml
 ```
+**You need to copy the env files into installed gym_sokoban/env and register new environments.**
 
 ## Example
 ```
@@ -22,3 +23,6 @@ python main.py
   organization={Springer}
 }
 ```
+
+## Contact
+Any questions or comments please feel free to contact me. z.yang(at)liacs.leidenuniv.nl

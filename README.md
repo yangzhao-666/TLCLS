@@ -25,4 +25,4 @@ python main.py
 ```
 
 ## Contact
-Any questions or comments please feel free to contact me. z.yang(at)liacs.leidenuniv.nl
+Any questions or comments please feel free to contact me: z.yang(at)liacs.leidenuniv.nl

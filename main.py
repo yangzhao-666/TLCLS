@@ -80,8 +80,7 @@ def train(args, wandb_session):
 if __name__ == "__main__":
     description = 'TLCLS'
     parser = argparse.ArgumentParser(description=description)
-    #parser.add_argument('--num_steps', type=int, default=1000000)
-    parser.add_argument('--num_steps', type=int, default=100)
+    parser.add_argument('--num_steps', type=int, default=1000000)
     parser.add_argument('--task', type=str, default='s1t1k1')
     parser.add_argument('--runs', type=int, default=3)
     parser.add_argument('--gamma', type=float, default=0.99)
